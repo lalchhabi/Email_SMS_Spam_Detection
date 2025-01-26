@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam SMS Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spam SMS Classifier</h1>
+        <textarea id="smsInput" placeholder="Enter your SMS here..."></textarea>
+        <button onclick="classifySMS()">Classify</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function classifySMS() {
+            const smsInput = document.getElementById('smsInput').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!smsInput.trim()) {
+                resultDiv.textContent = 'Please enter an SMS to classify.';
+                resultDiv.style.color = 'red';
+                return;
+            }
+
+            // Simulate classification logic for now
+            const isSpam = Math.random() > 0.5;
+
+            resultDiv.textContent = isSpam ? 'Spam SMS' : 'Not Spam';
+            resultDiv.style.color = isSpam ? 'red' : 'green';
+        }
+    </script>
+</body>
+</html>
