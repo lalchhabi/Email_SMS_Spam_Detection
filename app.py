@@ -13,11 +13,11 @@ def main():
     return render_template("index.html")
 
 
-vectorizer = pkl.load("vectorizer.pkl","rb")
-model = pkl.safe_load("model.pkl","rb")
+with open("vectorizer.pkl","rb") as file:
+    vectorizer = pkl.load(file)
 
-# print("Vectorizer",vectorizer)
-# print("Model",model)
+model = pkl.load(open("model.pkl","rb"))
+
 
 if __name__ == "__main__":
     app.run()
