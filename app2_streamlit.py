@@ -8,7 +8,7 @@ model = pkl.load(open("model.pkl","rb"))
 
 ### Now Create a Widget for a app
 st.title("Welcome to the SMS Spam Classifier")
-input_message = st.text_input("Enter the Message Here")
+input_message = st.text_area("Enter the Message Here")
 
 #### Predict the result only if I have pressed the button
 if st.button("Predict"):

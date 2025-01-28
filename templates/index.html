@@ -74,7 +74,7 @@
     </div>
 
     <script>
-        function classifySMS() {
+        async function classifySMS() {
             const smsInput = document.getElementById('smsInput').value;
             const resultDiv = document.getElementById('result');
 
@@ -84,11 +84,28 @@
                 return;
             }
 
-            // Simulate classification logic for now
-            const isSpam = Math.random() > 0.5;
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ smsInput: smsInput })
+                });
 
-            resultDiv.textContent = isSpam ? 'Spam SMS' : 'Not Spam';
-            resultDiv.style.color = isSpam ? 'red' : 'green';
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.textContent = data.result;
+                    resultDiv.style.color = data.result === 'Spam' ? 'red' : 'green';
+                } else {
+                    resultDiv.textContent = data.error || 'An error occurred.';
+                    resultDiv.style.color = 'red';
+                }
+            } catch (error) {
+                resultDiv.textContent = 'Failed to classify SMS. Please try again.';
+                resultDiv.style.color = 'red';
+            }
         }
     </script>
 </body>
