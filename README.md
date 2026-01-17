@@ -1,4 +1,4 @@
-# 📧 Email & SMS Spam Detection System
+# Email & SMS Spam Detection System
 ## Overview
 
 This project implements an **NLP-based spam detection system** that classifies emails and SMS messages as **Spam** or **Ham (Not Spam)** using traditional machine learning techniques.
